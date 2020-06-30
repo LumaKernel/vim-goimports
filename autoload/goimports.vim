@@ -74,9 +74,13 @@ function! s:handle_errors(filename, content) abort
   if len(l:errors)
     call setloclist(0, l:errors, 'r')
     call setloclist(0, [], 'a', {'title': 'Format'})
-    lopen
+    if get(g:, 'goimports_loclist', 1)
+      lopen
+    endif
   else
-    lclose
+    if get(g:, 'goimports_loclist', 1)
+      lclose
+    endif
   endif
 endfunction
 
@@ -84,7 +88,9 @@ function! s:reset_errors() abort
   let l:title = getloclist(0, {'title': 1})
   if has_key(l:title, 'title') && l:title['title'] ==# 'Format'
     lexpr []
-    lclose
+    if get(g:, 'goimports_loclist', 1)
+      lclose
+    endif
   endif
 endfunction
 

@@ -47,6 +47,15 @@ let g:goimports = 0
     unlet! g:goimports_simplify
     ```
 
+* `g:goimports_loclist` - lopen/lclose automatically (default disabled).
+
+    ```viml
+    " disable lopen/lcose automatically
+    let g:goimports_loclist = 0
+    " enable
+    unlet! g:goimports_loclist
+    ```
+
 ## Requirements
 
 * goimports
